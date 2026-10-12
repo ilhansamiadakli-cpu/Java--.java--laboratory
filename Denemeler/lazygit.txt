@@ -1,0 +1,64 @@
+=====================================================
+            LAZYGIT HIZLI KULLANIM KILAVUZU
+=====================================================
+
+1. BAŞLATMA VE ÇIKIŞ
+--------------------
+lazygit          : Proje dizininde Lazygit arayüzünü açar.
+q                : Lazygit'ten güvenli bir şekilde çıkar.
+?                : Bulunduğun ekrana ait tüm kısayolları gösterir.
+
+
+2. PANEL GEÇİŞLERİ VE DOLAŞMA
+------------------------------
+1                : Files (Dosyalar) paneli
+2                : Branches (Dallar) paneli
+3                : Commits (İşleme geçmişi) paneli
+4                : Stash (Geçici kayıtlar) paneli
+Sol / Sağ Ok     : Paneller arasında yatay geçiş yapar.
+Yukarı / Aşağı   : Liste içinde gezinir (veya j / k tuşları).
+Mouse Tıklaması  : İstediğin panele veya dosyaya tıkla.
+
+
+3. DOSYALARI EKLEME (STAGING / GIT ADD)
+----------------------------------------
+[Files Panelinde (1)]
+Space (Boşluk)   : Seçili dosyayı ekler/çıkarır (git add / git reset).
+a                : TÜM dosyaları tek seferde ekler/çıkarır (git add .).
+d                : Seçili dosyadaki değişiklikleri tamamen geri alır (DİKKAT: siler).
+Enter            : Dosyayı satır satır diff modunda açar (parça parça eklemek için).
+
+
+4. COMMIT VE PUSH / PULL AKIŞI
+------------------------------
+c                : Seçili dosyalar için commit mesajı ekranını açar.
+                   Mesajı yazıp Enter'a basınca commit atılır.
+A                : (Shift + a) Son commit mesajını düzenler (git commit --amend).
+P                : (Shift + p) GitHub'a gönderir (git push).
+p                : GitHub'dan güncellemeleri çeker (git pull).
+
+
+5. GEÇMİŞİ İNCELEME (COMMITS PANELİ - 3)
+----------------------------------------
+[Commits Panelinde (3)]
+Enter            : Seçili commit içindeki dosyaları listeler.
+r                : Seçili commit'in mesajını yeniden yazar (reword).
+d                : Seçili commit'i tamamen kaldırır/siler (drop).
+s                : Seçili commit'i bir alttakiyle birleştirir (squash).
+
+
+6. DALLAR (BRANCHES PANELİ - 2)
+-------------------------------
+Space (Boşluk)   : Seçili dala geçiş yapar (git checkout).
+n                : Seçili daldan yeni bir dal oluşturur (new branch).
+d                : Seçili dalı siler.
+
+
+=====================================================
+GÜNLÜK STANDART KULLANIM DÖNGÜSÜ (3 ADIMDA PUSH):
+  1. lazygit aç.
+  2. 'a' bas (tümünü ekle).
+  3. 'c' bas, mesajını yazıp Enter'a bas.
+  4. 'Shift + P' bas (GitHub'a gönder).
+  5. 'q' ile çık.
+=====================================================
