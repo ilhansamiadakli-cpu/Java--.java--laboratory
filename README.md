@@ -1,30 +1,28 @@
-<div align="center">
+&lt;div align=&quot;center&quot;&gt;
 
 # ☕ Java Laboratory
 
-### *Sıfırdan İleriye: Kişisel Java Öğrenme & Deney Alanı*
+### *Sıfırdan İleriye: Kişisel Java Öğrenme, OOP ve Akademik Çalışma Alanı*
 
-[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
-[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
-[![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[Java](https://www.google.com/search?q=https%3A%2F%2Fwww.oracle.com%2Fjava%2F)
+[OOP](https://www.google.com/search?q=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FObject-oriented_programming)
+[Git](https://www.google.com/search?q=https%3A%2F%2Fgit-scm.com%2F)
+[VS Code](https://www.google.com/search?q=https%3A%2F%2Fcode.visualstudio.com%2F)
+[License: MIT](https://www.google.com/search?q=https%3A%2F%2Fopensource.org%2Flicenses%2FMIT)
 
-<p align="center">
-  Bu repo; bir üniversite öğrencisi olarak Java programlama dilini öğrenirken geliştirdiğim algoritmaları, temel sözdizimi alıştırmalarını, nesne yönelimli programlama (OOP) denemelerini ve pratik araçlarımı topladığım kişisel çalışma laboratuvarımdır.
-</p>
+&lt;p align=&quot;center&quot;&gt;
+  Bu depo; bir yazılım mühendisliği öğrencisi olarak Java programlama dilini öğrenirken geliştirdiğim algoritmaları, bağımsız deneme kodlarımı ve Karadeniz Teknik Üniversitesi (KTÜ) Nesne Yönelimli Programlama dersi kapsamındaki haftalık laboratuvar projelerimi topladığım merkezi çalışma laboratuvarımdır.
+&lt;/p&gt;
 
 ---
 
-</div>
+&lt;/div&gt;
 
-## 📌 Projenin Amacı
+## 📌 Deponun Amacı ve Kapsamı
 
-Yazılım geliştirme yolculuğumda teorik Java bilgilerini pratik kod parçalarına dönüştürmek, derleme/paket mantığını pekiştirmek ve Git/GitHub iş akışlarımı profesyonelleştirmek adına bu depoyu aktif bir çalışma alanı olarak tutuyorum.
-
-Bu depoda yer alan içerikler:
-- 🧱 **Temel Sentaks & Algoritmalar:** Değişkenler, döngüler, koşul yapıları ve temel metotlar.
-- 🎯 **Nesne Yönelimli Programlama (OOP):** Sınıflar, kalıtım, arayüzler ve kapsülleme denemeleri.
-- 🛠️ **Geliştirici Araçları:** Kod çalıştırma, paket yönetimi ve terminal tabanlı Git pratikleri (`lazygit`, scriptler).
+Bu depo iki temel çalışma aksından oluşur:
+1. 🧪 **Kişisel Deneme Laboratuvarı (`Denemeler/`):** Yeni öğrenilen dil özelliklerinin, algoritma alıştırmalarının ve terminal tabanlı geliştirici araçlarının (`lazygit`, otomasyon scriptleri) akademik kısıtlama olmadan özgürce deneyimlendiği kum havuzu (*sandbox*).
+2. 🎓 **Nesne Yönelimli Programlama Laboratuvarı (`Nesne_Tabanlı_Programlama_dersi/`):** Üniversite müfredatına paralel olarak yürütülen, haftalık föylere dayalı modüler OOP projeleri (kapsülleme onarımları, durum güvenliği, değişmez sınıflar, paket düzeni vb.).
 
 ---
 
@@ -32,61 +30,93 @@ Bu depoda yer alan içerikler:
 
 ```text
 Java--.java--laboratory/
-├── Denemeler/
-│   ├── SRC/
-│   │   ├── Helloworld.java          # İlk adım, temel konsol çıktısı
-│   │   ├── LazyCoder.java           # Pratik algoritma / deneme kodları
-│   │   └── GitPush_eklentisi.java   # İş akışını hızlandırma denemeleri
-│   ├── lazygit.txt                  # Terminal üzerinden hızlı Git yönetimi kılavuzu
-│   └── Readme                       # Bölüme özel notlar
-├── .gitignore                       # Derleme (.class) ve gereksiz dosyaları filtreler
-└── README.md                        # Ana tanıtım dokümanı
+├── .vscode/                                    <-- VS Code ve Code Runner çoklu kaynak ayarları
+├── .gitignore                                  <-- Derleme (.class, bin/) ve sistem dosyaları filtresi
+├── README.md                                   <-- Depo ana tanıtım ve indeks dokümanı
+│
+├── Denemeler/                                  <-- 🧪 Kişisel Java Kum Havuzu (Sandbox)
+│   ├── README.md                               <-- Deneme alanı vizyonu ve çalışma felsefesi
+│   ├── lazygit.txt                             <-- Terminalden hızlı Git/Lazygit yönetim kılavuzu
+│   ├── bin/                                    <-- Deneme kodlarının derlenmiş .class dosyaları
+│   └── SRC/                                    <-- Sürekli güncellenen deneme ve algoritma sınıfları
+│
+└── Nesne_Tabanlı_Programlama_dersi/            <-- 🎓 KTÜ Yazılım Müh. OOP Dersi Çalışma Alanı
+    ├── README.MD                               <-- Ders müfredatı, kurallar ve haftalık ilerleme tablosu
+    ├── Res/                                    <-- Orijinal laboratuvar föyleri (PDF arşivi)
+    │   ├── Hafta_01_Laboratuvar_Foyu.pdf
+    │   ├── Hafta_02_Laboratuvar_Foyu.pdf
+    │   ├── Hafta_03_Laboratuvar_Foyu.pdf
+    │   └── Hafta_04_Laboratuvar_Foyu.pdf
+    ├── Hafta_04/                               <-- 4. Hafta: Kapsülleme, İmmutability & Paketler
+    │   ├── README.md                           <-- Görev analizleri, çıktılar ve kontrol soruları
+    │   ├── bin/                                <-- Hafta 4 derlenmiş .class dosyaları
+    │   └── src/                                <-- Görev 0-5 kaynak kodları ve kutuphane paketi
+    └── Hafta_XX/                               <-- Gelecek haftalık oturumlar (Hafta 5, 6, 7...)
 ```
 
 ---
 
 ## 🚀 Çalışma Ortamı & Araçlar
 
-- **Dil:** Java (OpenJDK)
-- **Editör:** Visual Studio Code
+- **Programlama Dili:** Java (OpenJDK 21 LTS)
+- **Geliştirme Ortamı:** Visual Studio Code + *Extension Pack for Java*
+- **Hızlı Çalıştırıcı:** Code Runner Eklentisi *(alt paketleri otomatik derleyecek şekilde yapılandırılmış)*
 - **Sürüm Kontrolü:** Git & GitHub
-- **Terminal Aracı:** [Lazygit](https://github.com/jesseduffield/lazygit) *(Hızlı commit ve sürüm yönetimi için)*
+- **Terminal Sürüm Yönetimi:** [Lazygit](https://www.google.com/search?q=https%3A%2F%2Fgithub.com%2Fjesseduffield%2Flazygit) *(Hızlı commit, branch ve push operasyonları için)*
 
 ---
 
-## 💻 Nasıl Çalıştırılır?
+## 💻 Nasıl Derlenir ve Çalıştırılır?
 
-Herhangi bir Java dosyasını terminal üzerinden derleyip çalıştırmak için:
+Her iki çalışma alanında da kaynak kodlar `src` (veya `SRC`) altında tutulurken, derlenen dosyalar `bin` dizinine yönlendirilir.
 
+### 1. Kişisel Denemeleri Çalıştırma
 ```bash
-# 1. Kaynak kodun bulunduğu dizine gidin
+# Denemeler dizinine geçin
 cd Denemeler/SRC
 
-# 2. Dosyayı derleyin
-javac Helloworld.java
-
-# 3. Çalıştırın
-java Helloworld
+# İlgili sınıfı derleyin ve çalıştırın
+javac -d ../bin DosyaAdi.java
+java -cp ../bin DosyaAdi
 ```
 
-> **İpucu:** Projede `package` tanımları kullanıldığında sınıfı her zaman projenin ana kök dizininden paket adıyla (`java paketAdi.SinifAdi`) çalıştırmayı unutmayın.
+### 2. OOP Laboratuvar Görevlerini Çalıştırma (Örn: Hafta 04)
+```bash
+# İlgili haftanın dizinine geçin
+cd Nesne_Tabanlı_Programlama_dersi/Hafta_04
+
+# Alt paketler dahil tüm kaynak dosyaları bin klasörüne derleyin
+javac -d bin src/*.java src/kutuphane/*.java
+
+# Görev sürücü programlarını çalıştırın
+java -cp bin Gorev1_UrunDemo
+java -cp bin Gorev4_KoordinatDemo
+java -cp bin Gorev5_KutuphaneDemo
+```
+
+> **İpucu:** VS Code kullanıyorsanız, `code-runner.executorMap` ayarı sayesinde herhangi bir demo sınıfında **Run Code** tuşuna basarak veya `main` metodu üzerindeki yerel **Run** bağlantısını kullanarak tek tıkla çalıştırabilirsiniz.
 
 ---
 
 ## 📈 Öğrenme Yol Haritası (Roadmap)
 
-- [x] Java sözdizimi temelleri ve derleme (`javac` / `java`) mekanizması
-- [x] VS Code & Git entegrasyonu ve terminal iş akışı
-- [ ] Nesne Yönelimli Programlama (OOP) ilkeleri (Sınıflar, Kalıtım, Polimorfizm)
-- [ ] Java Collections Framework (`ArrayList`, `HashMap` vb.)
-- [ ] Hata Yakalama (Exception Handling) ve Dosya Giriş/Çıkış (I/O) işlemleri
-- [ ] Mini konsol projeleri (Hesap makinesi, kütüphane yönetim sistemi vb.)
+- [x] Java sözdizimi temelleri, veri tipleri, döngüler ve derleme (`javac` / `java`) mekanizması
+- [x] VS Code, Code Runner ve Lazygit terminal iş akışlarının yapılandırılması
+- [x] Nesne ve sınıf temelleri, Stack/Heap bellek ayrımı ve referans tipler
+- [x] Kapsülleme onarımı, doğrulamalı setter mantığı ve guard clause kullanımı
+- [x] Atomik durum güncellemeleri ve iki alan arası tutarlılık kuralları (*invariants*)
+- [x] Değişmez (*Immutable*) sınıf tasarımı ve güvenli paylaşım ilkeleri
+- [x] Paket bildirimi (`package`) ve paket-özel (*package-private*) erişim yönetimi
+- [ ] Yapıcı zincirleme (*Constructor Chaining*) ve parametre doğrulama (Hafta 5)
+- [ ] `static` üyeler, sınıf düzeyinde durum yönetimi ve sabitler (Hafta 6)
+- [ ] Kalıtım (*Inheritance*) ve Çok Biçimlilik (*Polymorphism*)
+- [ ] Soyut Sınıflar (*Abstract Classes*) ve Arayüzler (*Interfaces*)
+- [ ] İstisna Yönetimi (*Exception Handling*) ve Giriş/Çıkış (*I/O*) İşlemleri
 
 ---
 
-<div align="center">
+&lt;div align=&quot;center&quot;&gt;
 
-⭐ *Öğrenme sürecime eşlik ettiğiniz için teşekkürler!*  
-Geri bildirim veya önerileriniz olursa çekinmeden Issue açabilirsiniz.
+⭐ *Yazılım geliştirme yolculuğumu ve laboratuvar projelerimi incelediğiniz için teşekkürler!*
 
-</div>
+&lt;/div&gt;
