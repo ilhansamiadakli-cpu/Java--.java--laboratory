@@ -7,7 +7,7 @@
  * yatir() ve cek(). Kural (pozitif tutar, yeterli bakiye, gunluk limit)
  * bu metotlarin icindedir.
  */
-public class BankaHesabi {
+public class BankaHesab {
 
     public static final double GUNLUK_CEKIM_LIMITI = 2000.0;
 
@@ -16,7 +16,7 @@ public class BankaHesabi {
     private double bakiye;
     private double bugunCekilen;
 
-    public BankaHesabi(String iban, String sahip, double acilis) {
+    public BankaHesab(String iban, String sahip, double acilis) {
         this.iban = iban;
         this.sahip = sahip;
         this.bakiye = (acilis > 0) ? acilis : 0.0;
