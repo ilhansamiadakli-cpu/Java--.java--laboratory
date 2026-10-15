@@ -11,7 +11,7 @@ public class Gorev0_Kontrol {
 
         System.out.println(sayac);
         System.out.println("Deger yalnizca artir() ile degisti: " + sayac.getDeger());
-        System.out.println("ORTAM HAZIR.");
+        System.out.println("ORTAM");
     }
 
     @Override
