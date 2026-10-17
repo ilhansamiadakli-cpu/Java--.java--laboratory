@@ -6,7 +6,7 @@ public class Kitap {
     public  double fiyat;
 
     public  int yasi(int buguninYili){
-        if(basimYili - buguninYili <= 0){
+        if(buguninYili - basimYili <= 0){
             System.out.println("Hata: Geçersiz yıl girdiniz.");
             return -1;// nasıl null yada eror dönerim, main de eğer yasi -1 dönerse hata derim
         }
@@ -28,7 +28,10 @@ public class Kitap {
         }
         fiyat = fiyat - (fiyat * yuzde / 100.0);
     }
-    public   void bilgiYaz(){
-        System.out.printf("Kitap: %s | Yazar: %s | Sayfa: %d | Yıl: %d | Fiyat: %.2f TL%n", baslik, yazar, sayfaSayisi, basimYili, fiyat);
+    public   void bilgiYaz(int buYil){
+        if(yasi(buYil) == -1){
+            return;
+        }
+        System.out.printf("Kitap: %s | Yazar: %s | Sayfa: %d | Yıl: %d | Fiyat: %.2f TL | Yas: %d | Sayfa Başına fiyat: %.2f TL%n", baslik, yazar, sayfaSayisi, basimYili, fiyat,yasi(buYil),sayfaBasinaFiyat());
     }
 }

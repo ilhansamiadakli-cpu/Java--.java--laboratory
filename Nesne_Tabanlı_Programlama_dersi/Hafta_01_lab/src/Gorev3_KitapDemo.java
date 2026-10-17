@@ -2,6 +2,7 @@
 
 public class Gorev3_KitapDemo {
     public static void main(String[] args) {
+        int buYil = 2026;
         Kitap inceMemet = new Kitap();
         inceMemet.baslik = "İnce Memet";
         inceMemet.yazar = "Yaşar Kemal";
@@ -16,17 +17,25 @@ public class Gorev3_KitapDemo {
         HaryPoter.basimYili = 1997;
         HaryPoter.fiyat = 150.8;
 
-        inceMemet.bilgiYaz();
-        System.out.println(" ");
-        HaryPoter.bilgiYaz();
-        System.out.println("-------[%20 indirim uygulandı]-------");
+        
+        inceMemet.bilgiYaz(buYil); System.out.println(" ");
+
+        HaryPoter.bilgiYaz(buYil);
+        System.out.printf("%n%n[ yüzde 20 indirim uygulandı]%n%n");
+
         inceMemet.indirimUygula(20);
         HaryPoter.indirimUygula(20);
-        inceMemet.bilgiYaz();
-        System.out.println(" ");
-        HaryPoter.bilgiYaz();
-        System.out.println(" ");
-        double toplam = inceMemet.fiyat + HaryPoter.fiyat;
-        System.out.println("Kitabların rafta toplam fiyatı: " + toplam);
+        inceMemet.bilgiYaz(buYil); System.out.println(" ");
+
+        HaryPoter.bilgiYaz(buYil); System.out.println(" ");
+
+        Kitap[] raf = {inceMemet, HaryPoter};
+        Double toplam = 0.0;
+        for(Kitap raflar : raf){
+            toplam = toplam + raflar.fiyat;
+        }
+
+
+        System.out.println("\nKitabların rafta toplam fiyatı: " + toplam + " TL");
     }
 }
