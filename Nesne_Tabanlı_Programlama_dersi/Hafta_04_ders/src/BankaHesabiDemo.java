@@ -5,7 +5,7 @@
 public class BankaHesabiDemo {
 
     public static void main(String[] args) {
-        BankaHesabi h = new BankaHesabi("TR33 0006 1005", "Ayse Yilmaz", 1200.0);
+        BankaHesab h = new BankaHesab("TR33 0006 1005", "Ayse Yilmaz", 1200.0);
         System.out.println("Acilis: " + h);
 
         System.out.println();

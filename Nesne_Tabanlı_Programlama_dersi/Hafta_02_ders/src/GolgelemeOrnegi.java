@@ -12,8 +12,8 @@ public class GolgelemeOrnegi {
 
     /** YANLIS yaklasim: this yok, atama kendine yapiliyor. */
     public void yanlisAyarla(String ad, int yas) {
-        ad = ad;        // parametre kendine atanir; alan degismez!
-        yas = yas;      // ayni sorun
+        this.ad = ad;        // parametre kendine atanir; alan degismez!
+        this.yas = yas;      // ayni sorun
     }
 
     /** DOGRU yaklasim: this ile alan acikca belirtiliyor. */
