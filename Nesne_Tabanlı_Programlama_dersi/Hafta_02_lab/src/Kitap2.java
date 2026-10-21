@@ -6,6 +6,7 @@ public class Kitap2 {
     private double fiyat;
 
     public Kitap2(String baslik, String yazar, int sayfaSayisi, int basimYili, double fiyat) {
+        //System.out.println("tam  yapici calisti"); // sınama
         if (baslik == null || baslik.isBlank()) {
             this.baslik = "İsimsiz";
         } else {
@@ -32,6 +33,48 @@ public class Kitap2 {
             this.fiyat = fiyat;
         }
     }
+
+    public Kitap2(String baslik, String yazar, int sayfaSayisi, int basimYili){
+        this(baslik,yazar,sayfaSayisi,basimYili,0.0);
+    }
+    public Kitap2(String baslik, String yazar){
+        this(baslik, yazar, 1,2026 ,0.0);
+    }
+    public Kitap2(Kitap2 kaynak){
+        this(kaynak.baslik,kaynak.yazar,kaynak.sayfaSayisi,kaynak.basimYili,kaynak.fiyat);
+    }
+
+    public void setFiyat(double fiyat){
+        if(fiyat < 0){
+            System.out.println("Hata: fiyat negatif olamaz");
+            return ;
+        }
+        this.fiyat = fiyat;
+    }
+    public boolean kalinMi(){
+        if( this.sayfaSayisi > 400){
+            return true;
+        }
+        return false;
+    }
+    public double sayfaBasinaFiyat(){
+        return (double)this.fiyat / this.sayfaSayisi;// ne olur ne olmaz (double) dedim
+    }
+    public void indirimUygula(double yuzde){
+        if(yuzde > 100 || yuzde < 0){
+            System.out.println("Hata: indirim oranı sadece 0 ile 100 arasında olmalıdır");
+            return ;
+        }// hata kontrol
+        this.fiyat =  this.fiyat - (this.fiyat*(yuzde/100));
+    }
+    public int yasi(int buguninYili){
+        if(buguninYili - this.basimYili < 0){
+            System.out.println("Hata bu günkü yılı doğru giriniz lütfen");
+            return -1;// hata kodu
+        }
+        return buguninYili - this.basimYili;
+    }
+
     String getBaslik() {
         return baslik;
     }
