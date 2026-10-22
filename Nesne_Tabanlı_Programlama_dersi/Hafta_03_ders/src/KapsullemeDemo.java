@@ -5,7 +5,7 @@
 public class KapsullemeDemo {
 
     public static void main(String[] args) {
-        BankaHesab h = new BankaHesab("TR12 0006 1005", "Ayse Yilmaz", 3000.0);
+        BankaHesabi h = new BankaHesabi("TR12 0006 1005", "Ayse Yilmaz", 3000.0);
         System.out.println("Baslangic : " + h);
 
         System.out.println();

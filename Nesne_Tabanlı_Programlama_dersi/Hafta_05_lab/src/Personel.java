@@ -118,3 +118,13 @@ public class Personel {
                 this.sicil, this.ad, this.maas, gorevleriYaz());
     }
 }
+/*
+? Sığ kopyada sig.gorevDegistir(0, "UZAKTAN teori dersi") çağrısı neden kaynağın görev listesini de değiştirdi? Bellekte kaç dizi var?
+!CEVAP: Sığ kopyada (sigKopya == true) yeni bir dizi oluşturulmamış, yalnızca kaynak nesnenin dizi referansı kopyalanmıştır (this.gorevler = kaynak.gorevler). Bu nedenle iki personel nesnesi de yığında (heap) aynı tek diziyi işaret eder. Bellekte yalnızca 1 adet dizi vardır; bu dizi üzerinden yapılan herhangi bir değişiklik her iki nesneye de yansır.
+
+? ad alanı String türündedir ve kopya yapıcıda clone() çağrılmamıştır. Bu bir hata mıdır? Yanıtınızı gerekçelendirin
+!CEVAP: Hayır, bir hata değildir. Java'da String sınıfı değişmezdir (immutable). Bir nesnenin adı değiştirilmek istendiğinde var olan String metni güncellenmez; bellekte yeni bir String nesnesi oluşturulup referansı atanır. Dolayısıyla aynı String referansının paylaşılması yan etki veya veri bozulması riski oluşturmaz, güvenlidir.
+
+? maas alanı için sığ/derin ayrımı neden anlamsızdır?
+!CEVAP: maas alanı bir nesne/referans türü değil, ilkel (primitive - double) bir veri türüdür. İlkel türler Java'da her zaman doğrudan değer kopyalaması (pass-by-value) ile kopyalanır ve referans tutmazlar. Dolayısıyla her nesne kendi maas değerini bağımsız olarak saklar; sığ veya derin kopyalama kavramı yalnızca dizi ve nesne gibi referans türleri için geçerlidir.
+*/
