@@ -23,7 +23,7 @@ public class KapsullemeDemo {
 
         System.out.println();
         System.out.println("--- Gun degisince ayni istek onaylanir ---");
-        //h.gunuKapat();
+        h.gunuKapat();
         System.out.println("  cek(1800)   -> " + h.cek(1800.0));
         System.out.println("  Durum: " + h);
 
