@@ -86,21 +86,29 @@ class Ogrenci extends Kisi {
 }
 class Personel extends Kisi {
     private final String unvan;
-    private final int  hizmetYili;
+    private final int hizmetYili;
 
-    public Personel(String ad, String tcNo, int dogumYili, String unvan, int hizmetYili){
-        super(ad,tcNo,dogumYili);
+    public Personel(String ad, String tcNo, int dogumYili, String unvan, int hizmetYili) {
+        super(ad, tcNo, dogumYili);
         this.unvan = unvan;
         this.hizmetYili = hizmetYili;
-        
     }
-    double kidemKatsayisi(){
-        return 1.0 + this.hizmetYili * 0.05;
+
+    public String getUnvan() {
+        return this.unvan;
+    }
+
+    public int getHizmetYili() {
+        return this.hizmetYili;
+    }
+
+    public double kidemKatsayisi() {
+        return 1.0 + (this.hizmetYili * 0.05);
     }
 
     @Override
-    public String tanit(){
-
+    public String tanit() {
+        return String.format(java.util.Locale.US, "%-14s %s yas=%d [Personel %s kidem=%.2f]",
+                getAd(), maskeliTc(), yas(), this.unvan, kidemKatsayisi());
     }
-
 }
