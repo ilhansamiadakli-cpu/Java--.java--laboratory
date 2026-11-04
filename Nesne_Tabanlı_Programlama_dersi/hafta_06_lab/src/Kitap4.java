@@ -9,7 +9,7 @@ public class  Kitap4 {
     private boolean odunctemi = false;
 
     private static int sonrakiNo = BASLANGIC_NO;
-    private static int uretilen = 0;   
+    private static int uretilen = 0;
     private static int oduncteki = 0;
 
     public Kitap4(String baslik, String yazar){
