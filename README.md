@@ -1,122 +1,172 @@
-&lt;div align=&quot;center&quot;&gt;
+# Java Laboratory
 
-# ☕ Java Laboratory
+Kişisel Java denemeleri, ders laboratuvarları ve küçük prototipler için otomatik keşif, izole derleme ve terminal tabanlı etkileşimli çalıştırıcı (TUI Launcher) sağlayan çalışma deposu.
 
-### *Sıfırdan İleriye: Kişisel Java Öğrenme, OOP ve Akademik Çalışma Alanı*
+## Amaç
 
-[Java](https://www.google.com/search?q=https%3A%2F%2Fwww.oracle.com%2Fjava%2F)
-[OOP](https://www.google.com/search?q=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FObject-oriented_programming)
-[Git](https://www.google.com/search?q=https%3A%2F%2Fgit-scm.com%2F)
-[VS Code](https://www.google.com/search?q=https%3A%2F%2Fcode.visualstudio.com%2F)
-[License: MIT](https://www.google.com/search?q=https%3A%2F%2Fopensource.org%2Flicenses%2FMIT)
+Bu depo; farklı klasör yapılarındaki bağımsız Java kaynak dosyalarını ve alt Maven projelerini tek bir `make run` komutu altında toplar. Her proje kendi klasöründe birbirinden izole şekilde derlenir ve çalıştırılır. Bir projedeki sözdizimi hatası veya eksik bağımlılık, başlatıcının açılmasını veya diğer projelerin çalışmasını engellemez.
 
-&lt;p align=&quot;center&quot;&gt;
-  Bu depo; bir yazılım mühendisliği öğrencisi olarak Java programlama dilini öğrenirken geliştirdiğim algoritmaları, bağımsız deneme kodlarımı ve Karadeniz Teknik Üniversitesi (KTÜ) Nesne Yönelimli Programlama dersi kapsamındaki haftalık laboratuvar projelerimi topladığım merkezi çalışma laboratuvarımdır.
-&lt;/p&gt;
-
----
-
-&lt;/div&gt;
-
-## 📌 Deponun Amacı ve Kapsamı
-
-Bu depo iki temel çalışma aksından oluşur:
-1. 🧪 **Kişisel Deneme Laboratuvarı (`Denemeler/`):** Yeni öğrenilen dil özelliklerinin, algoritma alıştırmalarının ve terminal tabanlı geliştirici araçlarının (`lazygit`, otomasyon scriptleri) akademik kısıtlama olmadan özgürce deneyimlendiği kum havuzu (*sandbox*).
-2. 🎓 **Nesne Yönelimli Programlama Laboratuvarı (`Nesne_Tabanlı_Programlama_dersi/`):** Üniversite müfredatına paralel olarak yürütülen, haftalık föylere dayalı modüler OOP projeleri (kapsülleme onarımları, durum güvenliği, değişmez sınıflar, paket düzeni vb.).
-
----
-
-## 📂 Dizin Yapısı
+## Klasör Yapısı
 
 ```text
-Java--.java--laboratory/
-├── .vscode/                                    <-- VS Code ve Code Runner çoklu kaynak ayarları
-├── .gitignore                                  <-- Derleme (.class, bin/) ve sistem dosyaları filtresi
-├── README.md                                   <-- Depo ana tanıtım ve indeks dokümanı
-│
-├── Denemeler/                                  <-- 🧪 Kişisel Java Kum Havuzu (Sandbox)
-│   ├── README.md                               <-- Deneme alanı vizyonu ve çalışma felsefesi
-│   ├── lazygit.txt                             <-- Terminalden hızlı Git/Lazygit yönetim kılavuzu
-│   ├── bin/                                    <-- Deneme kodlarının derlenmiş .class dosyaları
-│   └── SRC/                                    <-- Sürekli güncellenen deneme ve algoritma sınıfları
-│
-└── Nesne_Tabanlı_Programlama_dersi/            <-- 🎓 KTÜ Yazılım Müh. OOP Dersi Çalışma Alanı
-    ├── README.MD                               <-- Ders müfredatı, kurallar ve haftalık ilerleme tablosu
-    ├── Res/                                    <-- Orijinal laboratuvar föyleri (PDF arşivi)
-    │   ├── Hafta_01_Laboratuvar_Foyu.pdf
-    │   ├── Hafta_02_Laboratuvar_Foyu.pdf
-    │   ├── Hafta_03_Laboratuvar_Foyu.pdf
-    │   └── Hafta_04_Laboratuvar_Foyu.pdf
-    ├── Hafta_04/                               <-- 4. Hafta: Kapsülleme, İmmutability & Paketler
-    │   ├── README.md                           <-- Görev analizleri, çıktılar ve kontrol soruları
-    │   ├── bin/                                <-- Hafta 4 derlenmiş .class dosyaları
-    │   └── src/                                <-- Görev 0-5 kaynak kodları ve kutuphane paketi
-    └── Hafta_XX/                               <-- Gelecek haftalık oturumlar (Hafta 5, 6, 7...)
+.
+├── makefile                            # Merkezi otomasyon komutları (run, sync, clean, lg, push)
+├── .gitignore                          # Derleme çıktıları, fat-jar ve IDE dosyaları filtresi
+├── README.md                           # Teknik dokümantasyon
+├── target/
+│   └── targets.manifest                # Otomatik üretilen çalıştırılabilir hedef listesi
+├── tools/
+│   └── launcher/                       # Bağımsız Maven modülü (Lanterna TUI + tarayıcı + çalıştırıcı)
+│       ├── pom.xml
+│       └── src/
+├── Denemeler/                          # Otomatik keşfedilen kategori klasörü
+│   ├── lazygit.txt
+│   └── SRC/
+├── Nesne_Tabanlı_Programlama_dersi/    # Otomatik keşfedilen kategori klasörü
+│   ├── Hafta_01_lab/
+│   ├── Hafta_02_ders/
+│   └── ...
+└── IntelliJProjects/                   # (Varsa) IDE projeleri - tarama ve temizleme dışında tutulur
 ```
 
----
+### Tarama ve İzolasyon Kuralları
 
-## 🚀 Çalışma Ortamı & Araçlar
+- **Tarama dışında tutulan kök dizinler:** `IntelliJProjects/`, `tools/`, `target/`, `build/`, `out/`, `bin/`, `.git/` ve `.` ile başlayan tüm gizli klasörler.
+- **Otomatik kategori keşfi:** Yukarıdaki liste dışında kalan her kök klasör (mevcut olanlar ve ileride eklenecek yeni klasörler) otomatik olarak bir kategori sekmesi olarak algılanır.
+- **`IntelliJProjects` koruması:** Hem proje taraması (`make sync`) hem temizleme (`make clean`) bu dizine kesinlikle dokunmaz.
 
-- **Programlama Dili:** Java (OpenJDK 21 LTS)
-- **Geliştirme Ortamı:** Visual Studio Code + *Extension Pack for Java*
-- **Hızlı Çalıştırıcı:** Code Runner Eklentisi *(alt paketleri otomatik derleyecek şekilde yapılandırılmış)*
-- **Sürüm Kontrolü:** Git & GitHub
-- **Terminal Sürüm Yönetimi:** [Lazygit](https://www.google.com/search?q=https%3A%2F%2Fgithub.com%2Fjesseduffield%2Flazygit) *(Hızlı commit, branch ve push operasyonları için)*
+## Keşif, Derleme ve Çalışma Dizini Mimarisi
 
----
+### 1. Proje Keşfi (`ProjectScanner`)
 
-## 💻 Nasıl Derlenir ve Çalıştırılır?
+Tarayıcı, desteklenen iki klasör düzenini otomatik olarak ayırır:
 
-Her iki çalışma alanında da kaynak kodlar `src` (veya `SRC`) altında tutulurken, derlenen dosyalar `bin` dizinine yönlendirilir.
+1. **Basit düzen (`simple`):**
+   - Doğrudan klasör içinde `.java` dosyaları (ör. `Denemeler/ornek/Main.java` ve yardımcı `.java` dosyaları)
+   - Geleneksel `src/` veya `SRC/` klasörü içeren projeler (alt paketler dahil, ör. `src/kutuphane/*.java`)
+   - `pom.xml` olmadan `src/main/java/` düzenine sahip klasörler
+2. **Standart Maven düzeni (`maven`):**
+   - Kendi `pom.xml` dosyasına sahip alt projeler (`src/main/java/...`)
 
-### 1. Kişisel Denemeleri Çalıştırma
+Aynı proje içinde `public static void main(String[] args)` (ve `String args[]`, `String... args` gibi geçerli varyantlar) içeren her `.java` dosyası ayrı bir çalıştırılabilir hedef olarak kaydedilir. `main` içermeyen aynı kaynak kökündeki diğer `.java` dosyaları yardımcı sınıf olarak derlemeye dahil edilir.
+
+Tüm hedefler `target/targets.manifest` dosyasına aşağıdaki 5 sütunlu formatta yazılır:
+
+```text
+Kategori|GörünenAd|AnaSınıf|ÇalışmaDizini|DerlemeTipi
+```
+
+### 2. İzole Derleme (`ProjectRunner`)
+
+- **Basit projeler (`simple`):** Her hedef kendi projesinin içindeki `<ÇalışmaDizini>/.out/<AnaSınıf>/` dizinine `javac -encoding UTF-8 -sourcepath <kaynakKök>` ile derlenir. Aynı klasördeki başka bir `main` dosyasında derleme hatası varsa sağlam hedef etkilenmez; kullanılmayan bir yardımcı dosyada hata varsa yalnızca hedef sınıf ve onun bağımlı olduğu sınıflar derlenerek tam izolasyon sağlanır.
+- **Maven projeleri (`maven`):** Proje dizininde `mvn -B compile` çalıştırılır ve bağımlılık classpath'i `mvn -B -q dependency:build-classpath -Dmdep.outputFile=target/runtime.cp` ile çözümlenir.
+
+### 3. Çalışma Dizini Garantisi
+
+Bir program TUI üzerinden çalıştırıldığında:
+
+1. Lanterna ekranı ve ham terminal modu geçici olarak tamamen kapatılır, normal terminal oturumu geri verilir.
+2. Çocuk süreç `ProcessBuilder` ile başlatılır; `inheritIO()` ile doğrudan terminale bağlanır (klavye girdisi, `Scanner(System.in)` ve renkli çıktı sorunsuz çalışır).
+3. `ProcessBuilder.directory(...)` değeri **kesinlikle hedefin kendi `ÇalışmaDizini` klasörüne** ayarlanır. Böylece proje klasöründeki `deneme.txt`, `data.json` gibi göreli dosya yolları her zaman doğru çözülür.
+4. Program sonlandığında çıkış kodu yazdırılır ve kullanıcı `Enter` tuşuna bastığında TUI menüsüne geri dönülür.
+
+## Make Komutları
+
+| Komut | Açıklama |
+| --- | --- |
+| `make` veya `make run` | Gerekiyorsa `tools/launcher` fat-jar paketini (`mvn package`) oluşturur, `target/targets.manifest` dosyasını günceller ve TUI menüsünü başlatır. |
+| `make sync` | Tüm depoyu tarar, keşfedilen kategorileri ve hedefleri ayrıntılı log ile ekrana basar ve `target/targets.manifest` dosyasını yeniler. |
+| `make clean` | `target/`, `.out/`, `*.out` ve `*.class` derleme çıktılarını temizler. `IntelliJProjects` dizinini korur. |
+| `make lg` | Sistemde kuruluysa `lazygit` arayüzünü başlatır. |
+| `make push` | `git add -A`, otomatik commit ve `git push` çalıştırır. Özel mesaj için: `make push MSG="commit mesajı"`. |
+
+## TUI Launcher Özellikleri ve Kısayollar
+
+Launcher açıldığında imleç doğrudan arama kutusundadır.
+
+### Arama Özellikleri
+
+- **Türkçe karakter normalizasyonu:** `ç, ğ, ı, İ, ö, ş, ü` karakterleri büyük/küçük harf duyarsız olarak ASCII karşılıklarına dönüştürülür (ör. `asal sayi` sorgusu `AsalSayıBulma` sınıfını bulur).
+- **Çok kelimeli ve kısaltma destekli puanlama:** Birden fazla kelimeyle daraltma (ör. `hafta 4 kutup`) ve CamelCase/ayraç baş harfleriyle kısaltma eşleştirme (ör. `g5kd` -> `Gorev5_KutuphaneDemo`) desteklenir.
+- **Sağ önizleme paneli:** Seçili hedefin derleme durumunu (`[OK]`, `[ESKI]`, `[--]`, `[HATA]`), çalışma dizinini, klasördeki dosyaları (`.txt`, `.json` vb.) ve son derleme çıktısını gösterir.
+- **CLI argüman kutusu:** `Tab` ile geçilerek programa gönderilecek komut satırı parametreleri girilebilir (tırnaklı argümanlar desteklenir).
+
+### Klavye Kısayolları
+
+| Tuş | İşlev |
+| --- | --- |
+| `↑` / `↓` / `PgUp` / `PgDn` | Arama kutusundan çıkmadan hedef listesinde gezinir |
+| `Enter` | Seçili hedefi derler ve kendi çalışma dizininde çalıştırır |
+| `F5` | Seçili hedefi yalnızca derler (çalıştırmadan) |
+| `r` (liste odağında) / `Ctrl+R` | Seçili hedefi yalnızca derler |
+| `Tab` / `Shift+Tab` | Odak alanını değiştirir (`Arama` -> `Liste` -> `CLI Argümanları`) |
+| `←` / `→` (liste odağında veya arama boşken) | Kategori sekmeleri arasında geçiş yapar |
+| `F2` / `F3` veya `Ctrl+←` / `Ctrl+→` | Herhangi bir alandan kategori sekmelerini değiştirir |
+| `F6` | TUI içinden proje taramasını (`targets.manifest`) yeniler |
+| `Esc` | Arama/argüman metni doluysa temizler; boşsa çıkış yapar |
+| `q` (liste odağında) / `Ctrl+Q` / `Ctrl+C` | Uygulamadan çıkar |
+
+## Gereksinimler ve Kurulum
+
+Gerekli araçlar:
+- **JDK 25 LTS**
+- **Apache Maven 3.8+**
+- **GNU Make**
+- **lazygit** (opsiyonel, `make lg` için)
+
+### macOS (Homebrew)
+
 ```bash
-# Denemeler dizinine geçin
-cd Denemeler/SRC
-
-# İlgili sınıfı derleyin ve çalıştırın
-javac -d ../bin DosyaAdi.java
-java -cp ../bin DosyaAdi
+brew install openjdk@25 maven make lazygit
 ```
 
-### 2. OOP Laboratuvar Görevlerini Çalıştırma (Örn: Hafta 04)
+JDK'yı sistemin tanıması için (gerekirse):
+
 ```bash
-# İlgili haftanın dizinine geçin
-cd Nesne_Tabanlı_Programlama_dersi/Hafta_04
-
-# Alt paketler dahil tüm kaynak dosyaları bin klasörüne derleyin
-javac -d bin src/*.java src/kutuphane/*.java
-
-# Görev sürücü programlarını çalıştırın
-java -cp bin Gorev1_UrunDemo
-java -cp bin Gorev4_KoordinatDemo
-java -cp bin Gorev5_KutuphaneDemo
+sudo ln -sfn $(brew --prefix)/opt/openjdk@25/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-25.jdk
+echo 'export PATH="$(brew --prefix)/opt/openjdk@25/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
-> **İpucu:** VS Code kullanıyorsanız, `code-runner.executorMap` ayarı sayesinde herhangi bir demo sınıfında **Run Code** tuşuna basarak veya `main` metodu üzerindeki yerel **Run** bağlantısını kullanarak tek tıkla çalıştırabilirsiniz.
+### Linux (Debian / Ubuntu)
 
----
+```bash
+sudo apt update
+sudo apt install -y openjdk-25-jdk maven make git
+```
 
-## 📈 Öğrenme Yol Haritası (Roadmap)
+`lazygit` kurulumu (Ubuntu/Debian):
 
-- [x] Java sözdizimi temelleri, veri tipleri, döngüler ve derleme (`javac` / `java`) mekanizması
-- [x] VS Code, Code Runner ve Lazygit terminal iş akışlarının yapılandırılması
-- [x] Nesne ve sınıf temelleri, Stack/Heap bellek ayrımı ve referans tipler
-- [x] Kapsülleme onarımı, doğrulamalı setter mantığı ve guard clause kullanımı
-- [x] Atomik durum güncellemeleri ve iki alan arası tutarlılık kuralları (*invariants*)
-- [x] Değişmez (*Immutable*) sınıf tasarımı ve güvenli paylaşım ilkeleri
-- [x] Paket bildirimi (`package`) ve paket-özel (*package-private*) erişim yönetimi
-- [ ] Yapıcı zincirleme (*Constructor Chaining*) ve parametre doğrulama (Hafta 5)
-- [ ] `static` üyeler, sınıf düzeyinde durum yönetimi ve sabitler (Hafta 6)
-- [ ] Kalıtım (*Inheritance*) ve Çok Biçimlilik (*Polymorphism*)
-- [ ] Soyut Sınıflar (*Abstract Classes*) ve Arayüzler (*Interfaces*)
-- [ ] İstisna Yönetimi (*Exception Handling*) ve Giriş/Çıkış (*I/O*) İşlemleri
+```bash
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+rm -f lazygit lazygit.tar.gz
+```
 
----
+Arch Linux için:
 
-&lt;div align=&quot;center&quot;&gt;
+```bash
+sudo pacman -S jdk25-openjdk maven make lazygit
+```
 
-⭐ *Yazılım geliştirme yolculuğumu ve laboratuvar projelerimi incelediğiniz için teşekkürler!*
+### Windows (winget veya Chocolatey)
 
-&lt;/div&gt;
+PowerShell üzerinden `winget` ile:
+
+```powershell
+winget install EclipseAdoptium.Temurin.25.JDK
+winget install Apache.Maven
+winget install GnuWin32.Make
+winget install JesseDuffield.lazygit
+```
+
+Alternatif olarak WSL (Ubuntu) veya Git Bash ortamında Linux komutlarıyla da kullanılabilir. Kurulum sonrasında terminali yeniden başlatıp sürümleri doğrulayın:
+
+```bash
+java -version
+javac -version
+mvn -version
+make --version
+```

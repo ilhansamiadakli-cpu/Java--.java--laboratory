@@ -1,16 +1,16 @@
-# Compiled class file
+# Build & launcher outputs
+target/
+**/target/
+build/
+out/
+.out/
+**/.out/
+*.out
+bin/
+**/bin/
+
+# Compiled Java classes and archives
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
@@ -19,12 +19,24 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Logs and JVM crash files
+*.log
 hs_err_pid*
 replay_pid*
 
-# VS Code settings
+# IDE & editor metadata
+.idea/
+*.iml
+*.ipr
+*.iws
 .vscode/
-bin/
-Denemeler/bin/
-DS_Store
+.classpath
+.project
+.settings/
+*.ctxt
+.mtj.tmp/
+
+# OS artifacts
+.DS_Store
+**/.DS_Store
+Thumbs.db
