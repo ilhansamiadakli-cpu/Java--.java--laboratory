@@ -29,6 +29,14 @@ public final class LauncherTui {
 
     private static final String ALL_TAB = "Tümü";
 
+    private static final String ANSI_RESET = "\033[0m";
+    private static final String ANSI_CYAN = "\033[96m";
+    private static final String ANSI_GREEN = "\033[92m";
+    private static final String ANSI_RED = "\033[91m";
+    private static final String ANSI_GRAY = "\033[90m";
+    private static final String RUN_SEPARATOR =
+            ANSI_GRAY + "────────────────────────────────────────────────────────────────────────" + ANSI_RESET;
+
     private enum FocusArea {
         SEARCH,
         LIST,
@@ -475,16 +483,10 @@ public final class LauncherTui {
         try {
             System.out.print("\033[H\033[2J");
             System.out.flush();
-            System.out.println("========================================================================");
-            System.out.println(" Hedef          : " + target.getDisplayName());
-            System.out.println(" Ana Sinif      : " + target.getMainClass());
-            System.out.println(" Calisma Dizini : " + target.resolveWorkingDir(repoRoot));
-            System.out.println(" Derleme Tipi   : " + target.getBuildType());
+            System.out.println(ANSI_CYAN + "[1/2] Derleniyor..." + ANSI_RESET);
             if (!parsedArgs.isEmpty()) {
-                System.out.println(" Argumanlar     : " + String.join(" ", parsedArgs));
+                System.out.println(ANSI_GRAY + "Argümanlar: " + String.join(" ", parsedArgs) + ANSI_RESET);
             }
-            System.out.println("========================================================================");
-            System.out.println("[1/2] Derleniyor...");
             System.out.flush();
 
             ProjectRunner.CompileResult compileResult = runner.compile(target);
@@ -494,27 +496,29 @@ public final class LauncherTui {
 
             if (!compileResult.success()) {
                 System.out.println();
-                System.out.println("[HATA] Derleme basarisiz oldu:");
+                System.out.println(ANSI_RED + "[HATA] Derleme başarısız oldu:" + ANSI_RESET);
                 System.out.println(compileResult.output());
                 statusMessage = "Derleme hatasi: " + target.getDisplayName();
             } else {
-                System.out.printf("[2/2] Calistiriliyor (%d ms icinde derlendi)...%n", compileResult.durationMs());
-                System.out.println("------------------------------------------------------------------------");
+                System.out.printf("%s[2/2] Çalıştırılıyor%s %s(%d ms içinde derlendi)%s%n",
+                        ANSI_CYAN, ANSI_RESET, ANSI_GRAY, compileResult.durationMs(), ANSI_RESET);
+                System.out.println(RUN_SEPARATOR);
                 System.out.flush();
 
                 try {
                     int exitCode = runner.runInteractive(target, compileResult.classpath(), parsedArgs);
                     System.out.println();
-                    System.out.println("------------------------------------------------------------------------");
-                    System.out.printf("Program sonlandi (Cikis kodu: %d)%n", exitCode);
+                    System.out.println(RUN_SEPARATOR);
+                    String exitColor = (exitCode == 0) ? ANSI_GREEN : ANSI_RED;
+                    System.out.printf("%sProgram sonlandı (Çıkış kodu: %d)%s%n", exitColor, exitCode, ANSI_RESET);
                     statusMessage = String.format("Son calistirma: %s (cikis kodu: %d)",
                             target.getDisplayName(), exitCode);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                    System.out.println("\nProgram kesildi.");
+                    System.out.println("\n" + ANSI_RED + "Program kesildi." + ANSI_RESET);
                     statusMessage = "Program kesildi: " + target.getDisplayName();
                 } catch (IOException e) {
-                    System.out.println("\n[HATA] Calistirma basarisiz: " + e.getMessage());
+                    System.out.println("\n" + ANSI_RED + "[HATA] Çalıştırma başarısız: " + e.getMessage() + ANSI_RESET);
                     statusMessage = "Calistirma hatasi: " + e.getMessage();
                 }
             }
@@ -526,7 +530,7 @@ public final class LauncherTui {
     }
 
     private void waitForEnter() {
-        System.out.print("\nMenüye dönmek için Enter'a basın...");
+        System.out.print("\n" + ANSI_GRAY + "Menüye dönmek için Enter'a basın..." + ANSI_RESET);
         System.out.flush();
         try {
             int ch;
@@ -777,7 +781,7 @@ public final class LauncherTui {
         row = drawMetaRow(tg, x + 1, row, innerWidth, maxRow, "Kategori : ", target.getCategory(), TextColor.ANSI.WHITE);
         row = drawMetaRow(tg, x + 1, row, innerWidth, maxRow, "Ana Sınıf: ", target.getMainClass(), TextColor.ANSI.CYAN_BRIGHT);
         row = drawMetaRow(tg, x + 1, row, innerWidth, maxRow, "Derleme  : ",
-                target.isMaven() ? "Maven (pom.xml)" : "Basit (javac -> .out/)", TextColor.ANSI.WHITE);
+                target.isMaven() ? "Maven (pom.xml)" : "Basit (javac -> bin/.launcher/)", TextColor.ANSI.WHITE);
         row = drawMetaRow(tg, x + 1, row, innerWidth, maxRow, "Durum    : ",
                 status.getBadge() + " " + status.getLabel(), statusColor(status, false));
         row = drawMetaRow(tg, x + 1, row, innerWidth, maxRow, "Dizin    : ", target.getWorkingDir(), TextColor.ANSI.WHITE);

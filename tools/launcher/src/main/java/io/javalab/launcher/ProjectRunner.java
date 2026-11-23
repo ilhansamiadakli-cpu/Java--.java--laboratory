@@ -445,7 +445,7 @@ public final class ProjectRunner {
 
     private Path simpleOutDir(Path workDir, String mainClass) {
         String safe = mainClass.replace('.', '_').replace('/', '_').replace('\\', '_');
-        return workDir.resolve(".out").resolve(safe);
+        return workDir.resolve("bin").resolve(".launcher").resolve(safe);
     }
 
     private long newestJavaMillis(Path sourceRoot) {

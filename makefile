@@ -35,7 +35,7 @@ clean:
 	@rm -rf target
 	@find . \
 		\( -path "./$(IDE_DIR)" -o -path "./.git" \) -prune -o \
-		-type d \( -name "target" -o -name ".out" \) -prune -exec rm -rf {} +
+		-type d \( -name "target" -o -name ".out" -o -path "*/bin/.launcher" \) -prune -exec rm -rf {} +
 	@find . \
 		\( -path "./$(IDE_DIR)" -o -path "./.git" \) -prune -o \
 		-type f \( -name "*.class" -o -name "*.out" \) -exec rm -f {} +

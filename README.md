@@ -58,7 +58,7 @@ Kategori|GörünenAd|AnaSınıf|ÇalışmaDizini|DerlemeTipi
 
 ### 2. İzole Derleme (`ProjectRunner`)
 
-- **Basit projeler (`simple`):** Her hedef kendi projesinin içindeki `<ÇalışmaDizini>/.out/<AnaSınıf>/` dizinine `javac -encoding UTF-8 -sourcepath <kaynakKök>` ile derlenir. Aynı klasördeki başka bir `main` dosyasında derleme hatası varsa sağlam hedef etkilenmez; kullanılmayan bir yardımcı dosyada hata varsa yalnızca hedef sınıf ve onun bağımlı olduğu sınıflar derlenerek tam izolasyon sağlanır.
+- **Basit projeler (`simple`):** Her hedef kendi projesinin içindeki `<ÇalışmaDizini>/bin/.launcher/<AnaSınıf>/` dizinine `javac -encoding UTF-8 -sourcepath <kaynakKök>` ile derlenir. Aynı klasördeki başka bir `main` dosyasında derleme hatası varsa sağlam hedef etkilenmez; kullanılmayan bir yardımcı dosyada hata varsa yalnızca hedef sınıf ve onun bağımlı olduğu sınıflar derlenerek tam izolasyon sağlanır.
 - **Maven projeleri (`maven`):** Proje dizininde `mvn -B compile` çalıştırılır ve bağımlılık classpath'i `mvn -B -q dependency:build-classpath -Dmdep.outputFile=target/runtime.cp` ile çözümlenir.
 
 ### 3. Çalışma Dizini Garantisi
